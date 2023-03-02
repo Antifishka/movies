@@ -1,0 +1,1 @@
+(self.webpackChunknews=self.webpackChunknews||[]).push([[38],{38:function(){}}]);
