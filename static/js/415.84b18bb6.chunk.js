@@ -1,1 +1,0 @@
-(self.webpackChunknews=self.webpackChunknews||[]).push([[415],{415:function(){}}]);
