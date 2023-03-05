@@ -1,20 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { App } from 'components/App/App';
-import './index.css';
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from "./redux/store";
+import { BrowserRouter } from 'react-router-dom';
+import { App } from 'components/App';
+import { StyledEngineProvider } from '@mui/material/styles';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter basename="/news">
-          <App />
-        </BrowserRouter>
-      </PersistGate>
-    </Provider>
+    <StyledEngineProvider injectFirst>
+      <BrowserRouter basename="/goit-react-hw-05-movies">
+        <App />
+      </BrowserRouter>
+    </StyledEngineProvider>  
   </React.StrictMode>
 );
+
