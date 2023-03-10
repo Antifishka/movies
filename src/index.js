@@ -7,7 +7,7 @@ import { StyledEngineProvider } from '@mui/material/styles';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <StyledEngineProvider injectFirst>
-      <BrowserRouter basename="/goit-react-hw-05-movies">
+      <BrowserRouter basename="/movies">
         <App />
       </BrowserRouter>
     </StyledEngineProvider>  
