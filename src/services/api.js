@@ -9,9 +9,8 @@ const apiInstance = axios.create({
     },
 });
 
-async function fetchTrendingMovies() {
-    const response = await apiInstance.get('trending/movie/day');
-    console.log(response);
+async function fetchTrendingMovies(page) {
+    const response = await apiInstance.get(`trending/movie/day?page=${page}`);
      
     const data = response.data;
 

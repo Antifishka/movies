@@ -26,7 +26,7 @@ export const PaginationMUI = ( {page, pages, onClick} ) => {
         <Stack spacing={3}>
           <Pagination
             color="primary" 
-            size="large"
+            shape="rounded"
             count={pages}
             page={page}
             onChange={onClick}

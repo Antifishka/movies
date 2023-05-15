@@ -39,7 +39,7 @@ const Home = () => {
     };
 
   return (
-    <Box pb="60px" as="main">
+    <Box pb="52px" as="main">
       <HomeTitle>Trending today</HomeTitle>
 
       {isLoading && <Loader />} 
