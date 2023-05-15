@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
-import API from '../../services/api';
+import API from 'services/api';
 import { Loader } from "components/Loader/Loader";
 import { BASE_IMAGE_URL, PlACEHOLDER_IMAGE_URL } from 'constants/constants';
 import { HomeTitle, MoviesList } from "./Home.styled";
 import { MoviesItem } from "components/MoviesItem/MoviesItem";
-// import { Pagination } from "components/Pagination/Pagination";
+import { PaginationMUI } from 'components/Pagination/Pagination';
+import { Box } from "components/Box/Box";
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
+  const [page, setPage] = useState(1);
+  const [pages, setPages] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -16,9 +19,12 @@ const Home = () => {
 
     async function getTrendinngMovies() {
       try {
-        const fetchMovies = await API.fetchTrendingMovies();
-        console.log(fetchMovies);
-        setTrendingMovies(fetchMovies);
+        const data = await API.fetchTrendingMovies(page);
+        console.log(data, "data");
+
+        const {results, total_pages} = data;
+        setTrendingMovies(results);
+        setPages(total_pages);
 
       } catch (error) {
         console.log(error);
@@ -26,10 +32,14 @@ const Home = () => {
         setIsLoading(false);
       };
     };
-  }, []);
+  }, [page]);
+
+  const handleChangePage = (e, value) => {
+        setPage(value);
+    };
 
   return (
-    <main>
+    <Box pb="60px" as="main">
       <HomeTitle>Trending today</HomeTitle>
 
       {isLoading && <Loader />} 
@@ -50,8 +60,11 @@ const Home = () => {
         ))}
       </MoviesList>
 
-      {/* <Pagination/> */}
-    </main>
+      <PaginationMUI
+        page={page}
+        pages={pages}
+        onClick={handleChangePage} />
+    </Box>
   );
 };
 

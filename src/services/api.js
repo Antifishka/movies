@@ -11,14 +11,15 @@ const apiInstance = axios.create({
 
 async function fetchTrendingMovies() {
     const response = await apiInstance.get('trending/movie/day');
+    console.log(response);
      
-    const trendingMovies = response.data.results;
+    const data = response.data;
 
-    if (!trendingMovies.length) {
+    if (!data.results.length) {
         throw new Error(`Sorry, there are no movies.`)
     }
 
-    return trendingMovies;
+    return data;
 };
 
 async function fetchMovieById(id) {

@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import { GlobalStyle } from "./GlobalStyles";
+import { GlobalStyle } from 'globalStyles/globalStyles';
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { SharedLayout } from "./SharedLayout/SharedLayout";
