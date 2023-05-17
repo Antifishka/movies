@@ -27,16 +27,16 @@ async function fetchMovieById(id) {
     return data;
 }
 
-async function fetchSearchMovies(query) {
-    const response = await apiInstance.get(`search/movie?query=${query}`);
+async function fetchSearchMovies(query, page) {
+    const response = await apiInstance.get(`search/movie?query=${query}&page=${page}`);
 
-    const searchMovies = response.data.results;
+    const data = response.data;
 
-    if (!searchMovies.length) {
+    if (!data.results.length) {
         throw new Error(`Sorry, there are no movies matching your search query. Please try again.`)
     }
 
-    return searchMovies;
+    return data;
 }
 
 async function fetchMovieCredits(id) {

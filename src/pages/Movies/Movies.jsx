@@ -1,18 +1,22 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import API from 'services/api';
+import { usePaginationContext } from 'context/pagination';
 import { toast } from 'react-toastify';
 import { MoviesList } from "../Home/Home.styled";
 import { SearchForm } from "components/SearchForm/SearchForm";
 import { Loader } from "components/Loader/Loader";
 import { MoviesItem } from "components/MoviesItem/MoviesItem";
+import { PaginationMUI } from 'components/Pagination/Pagination';
 import { BASE_IMAGE_URL, PlACEHOLDER_IMAGE_URL } from 'constants/constants';
+import { Box } from "components/Box/Box";
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('search') ?? '');
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { page, setPage, setTotalPages } = usePaginationContext();
 
   useEffect(() => {
     if (!query) {
@@ -24,9 +28,12 @@ const Movies = () => {
 
     async function getSearchMovies() {
       try {
-        const fetchMovies = await API.fetchSearchMovies(query);
-        console.log(fetchMovies);
-        setMovies(fetchMovies);
+        const data = await API.fetchSearchMovies(query, page);
+        console.log(data, "data");
+ 
+        const {results, total_pages} = data;
+        setMovies(results);
+        setTotalPages(total_pages);
 
       } catch (error) {
         console.log(error);
@@ -35,13 +42,14 @@ const Movies = () => {
         setIsLoading(false);
       };
     };
-  }, [query]);
+  }, [query, page, setTotalPages]);
 
   const handleFormSubmit = (query) => {
     console.log(query);
 
     setQuery(query);
     setMovies([]);
+    setPage(1);
   };
 
   const updateQueryString = (value) => {
@@ -49,7 +57,7 @@ const Movies = () => {
   };
   
   return (
-    <main>
+    <Box pb="52px" as="main">
       <SearchForm onSubmit={handleFormSubmit} onChange={updateQueryString} />
 
       {isLoading && <Loader />} 
@@ -69,7 +77,9 @@ const Movies = () => {
           } />
         ))}
       </MoviesList>
-    </main>
+
+      <PaginationMUI />
+    </Box>
   );
 };
 
