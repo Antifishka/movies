@@ -7,7 +7,10 @@ export const themeStyles = {
     space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
     fontSizes: {
         s: '14px',
-    },   
+    }, 
+    transition: {
+        main: 'color 250ms cubic-bezier(0.4, 0, 0.2, 1)',
+    },
     breakpoints: ['320px', '768px', '960px'],
 }
 

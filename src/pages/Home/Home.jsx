@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import API from 'services/api';
+import { usePaginationContext } from 'context/pagination';
 import { Loader } from "components/Loader/Loader";
 import { BASE_IMAGE_URL, PlACEHOLDER_IMAGE_URL } from 'constants/constants';
 import { HomeTitle, MoviesList } from "./Home.styled";
@@ -9,9 +10,8 @@ import { Box } from "components/Box/Box";
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
-  const [page, setPage] = useState(1);
-  const [pages, setPages] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const { page, setTotalPages } = usePaginationContext();
 
   useEffect(() => {
     setIsLoading(true);
@@ -24,7 +24,7 @@ const Home = () => {
 
         const {results, total_pages} = data;
         setTrendingMovies(results);
-        setPages(total_pages);
+        setTotalPages(total_pages);
 
       } catch (error) {
         console.log(error);
@@ -32,11 +32,7 @@ const Home = () => {
         setIsLoading(false);
       };
     };
-  }, [page]);
-
-  const handleChangePage = (e, value) => {
-        setPage(value);
-    };
+  }, [page, setTotalPages]);
 
   return (
     <Box pb="52px" as="main">
@@ -60,10 +56,7 @@ const Home = () => {
         ))}
       </MoviesList>
 
-      <PaginationMUI
-        page={page}
-        pages={pages}
-        onClick={handleChangePage} />
+      <PaginationMUI />
     </Box>
   );
 };

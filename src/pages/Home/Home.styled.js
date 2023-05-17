@@ -12,5 +12,7 @@ export const MoviesList = styled.ul`
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
   margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 

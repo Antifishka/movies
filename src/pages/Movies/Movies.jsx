@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import API from '../../services/api';
+import API from 'services/api';
 import { toast } from 'react-toastify';
-import { MoviesList } from "./Movies.styled";
+import { MoviesList } from "../Home/Home.styled";
 import { SearchForm } from "components/SearchForm/SearchForm";
 import { Loader } from "components/Loader/Loader";
 import { MoviesItem } from "components/MoviesItem/MoviesItem";

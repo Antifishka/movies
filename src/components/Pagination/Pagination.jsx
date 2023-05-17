@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { createTheme, ThemeProvider  } from '@mui/material/styles';
+import { usePaginationContext } from 'context/pagination';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { Box } from 'components/Box/Box';
-import PropTypes from 'prop-types';
 
 const theme = createTheme({
   palette: {
@@ -13,32 +13,32 @@ const theme = createTheme({
   },
 });
 
-export const PaginationMUI = ( {page, pages, onClick} ) => {
+export const PaginationMUI = ({onClick}) => {
+  const { page, setPage, totalPages } = usePaginationContext();
+
+  const handleChangePage = (e, value) => {
+    setPage(value);
+  };
+  
   return (
     <Box position="absolute"
-    bottom={0}
-    left={0}
-    right={0}
-    display="flex"
-    justifyContent="center"
-    mb="20px">
+      bottom={0}
+      left={0}
+      right={0}
+      display="flex"
+      justifyContent="center"
+      mb="20px">
       <ThemeProvider theme={theme}>
         <Stack spacing={3}>
           <Pagination
-            color="primary" 
+            color="primary"
             shape="rounded"
-            count={pages}
+            count={totalPages}
             page={page}
-            onChange={onClick}
+            onChange={handleChangePage}
           />
         </Stack>
-      </ThemeProvider>    
+      </ThemeProvider>
     </Box>
   );
-}
-
-PaginationMUI.propTypes = {
-  page: PropTypes.number.isRequired,
-  pages: PropTypes.number.isRequired,
-  onClick: PropTypes.func.isRequired,
 };

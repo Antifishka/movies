@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { theme } from "globalStyles/theme";
 
 export const Container = styled.div`
   position: relative;
@@ -30,7 +31,7 @@ export const Link = styled(NavLink)`
   font-weight: 500;
   font-size: 16px;
 
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${theme.transition.main};
   
   &.active {
     color: white;
