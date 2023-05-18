@@ -63,7 +63,7 @@ const Movies = () => {
       {isLoading && <Loader />} 
 
       <MoviesList>
-        {movies.map(({ id, title, poster_path, vote_average }) => (
+        {movies?.map(({ id, title, poster_path, vote_average }) => (
           <MoviesItem 
             key={id}
             id={id}
@@ -78,7 +78,7 @@ const Movies = () => {
         ))}
       </MoviesList>
 
-      <PaginationMUI />
+      {movies.length > 0 && <PaginationMUI />}
     </Box>
   );
 };

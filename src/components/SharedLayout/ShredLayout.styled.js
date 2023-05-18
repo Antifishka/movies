@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { theme } from "globalStyles/theme";
+import { up } from 'styled-breakpoints';
 
 export const Container = styled.div`
   position: relative;
@@ -26,10 +27,10 @@ export const Header = styled.header`
 export const Link = styled(NavLink)`
   padding: 8px 16px;
   border-radius: 4px;
-  text-decoration: none;
-  color: black;
+
   font-weight: 500;
-  font-size: 16px;
+   
+  color: black;
 
   transition: ${theme.transition.main};
   
@@ -41,5 +42,9 @@ export const Link = styled(NavLink)`
   :hover:not(.active),
   :focus-visible:not(.active){
     color: orangered;
+  }
+
+  ${up('mobile')} {
+    font-size: ${theme.fontSizes.m};
   }
 `;

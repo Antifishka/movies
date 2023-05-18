@@ -4,6 +4,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { Box } from 'components/Box/Box';
+import { useBreakpoint } from 'styled-breakpoints/react-styled';
+import { down } from 'styled-breakpoints';
 
 const theme = createTheme({
   palette: {
@@ -19,6 +21,9 @@ export const PaginationMUI = ({onClick}) => {
   const handleChangePage = (e, value) => {
     setPage(value);
   };
+
+  const onlyMobile = useBreakpoint(down('mobile'));
+  console.log(onlyMobile, "onlyMobile");
   
   return (
     <Box position="absolute"
@@ -33,6 +38,7 @@ export const PaginationMUI = ({onClick}) => {
           <Pagination
             color="primary"
             shape="rounded"
+            size={onlyMobile ? "small" : "medium"}
             count={totalPages}
             page={page}
             onChange={handleChangePage}
