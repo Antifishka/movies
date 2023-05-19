@@ -5,7 +5,7 @@ import { up } from 'styled-breakpoints';
 
 export const Container = styled.div`
   position: relative;
-  max-width: 960px;
+  max-width: ${theme.sizes.maxWidth};
   min-height: 100%;
   margin: 0 auto;
   padding: 0 16px;
@@ -17,7 +17,7 @@ export const Header = styled.header`
   justify-content: space-between;
   gap: 12px;
   padding: 8px 0;
-  border-bottom: 1px solid black;
+  border-bottom: ${theme.borders.normal};
 
   > nav {
     display: flex;
@@ -26,22 +26,22 @@ export const Header = styled.header`
 
 export const Link = styled(NavLink)`
   padding: 8px 16px;
-  border-radius: 4px;
+  border-radius: ${theme.radii.normal};
 
-  font-weight: 500;
+  font-weight: ${theme.fontWeights.medium};
    
-  color: black;
+  color: ${theme.colors.mainText};
 
   transition: ${theme.transition.main};
   
   &.active {
-    color: white;
-    background-color: orangered;
+    color: ${theme.colors.secondaryText};
+    background-color: ${theme.colors.accent};
   }
 
   :hover:not(.active),
   :focus-visible:not(.active){
-    color: orangered;
+    color: ${theme.colors.accent};
   }
 
   ${up('mobile')} {

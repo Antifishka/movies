@@ -2,7 +2,7 @@ import { useState, useEffect, Suspense } from "react";
 import { useParams, Outlet, useLocation } from "react-router-dom";
 import API from "../../services/api";
 import { BASE_IMAGE_URL, PlACEHOLDER_POSTER_URL } from 'constants/constants';
-import { MovieBox, MovieImg, MovieInfo, MovieAdditionalBox, MovieGenres, MovieAdditionalTitle, MovieAdditionalList, Link } from "./MovieDetails.styled";
+import { MovieBox, MovieImg, MovieInfo, MovieTitle, MovieAdditionalBox, MovieGenres, MovieAdditionalTitle, MovieAdditionalList, Link } from "./MovieDetails.styled";
 import { BackButton } from "components/BackButton/BackButton";
 
 const MovieDetails = () => {
@@ -49,9 +49,9 @@ const MovieDetails = () => {
       <MovieBox> 
         <MovieImg src={imagePath} alt={title} width="200"/>
         <MovieInfo>
-          <h2>{title}
+          <MovieTitle>{title}
             <span> ({year})</span>
-          </h2>
+          </MovieTitle>
           <p>User Score {userScore()}%</p>
           <h3>Overview</h3>
           <p>{overview}</p>

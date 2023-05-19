@@ -10,6 +10,8 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     margin: 0;
     font-size: ${theme.fontSizes.s};
+    font-weight: ${theme.fontWeights.normal};
+    line-height: ${theme.lineHeights.text};
   }
   #root { 
     height: 100%; 

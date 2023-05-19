@@ -23,7 +23,6 @@ export const PaginationMUI = ({onClick}) => {
   };
 
   const onlyMobile = useBreakpoint(down('mobile'));
-  console.log(onlyMobile, "onlyMobile");
   
   return (
     <Box position="absolute"

@@ -1,11 +1,10 @@
 import styled from "styled-components";
+import { theme } from "globalStyles/theme";
 
 export const CardWrapper = styled.li`
-  border-radius: 4px;
+  border-radius: ${theme.radii.normal};
   overflow: hidden;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%), 
-   0 1px 1px 0 rgb(0 0 0 / 14%),
-   0 2px 1px -1px rgb(0 0 0 / 12%);
+  box-shadow: ${theme.shadows.card};
 `;
 
 export const CardImg = styled.img`
@@ -19,9 +18,15 @@ export const CardInfo = styled.div`
   justify-content: space-between;
   padding: 4px;
   text-align: center;
-  font-size: 12px;
+  font-size: ${theme.fontSizes.xs};
+`;
+
+export const CardName = styled.h4`
+  color: ${theme.colors.mainText};
 `;
 
 export const CardText = styled.p`
   margin-top: auto;
+
+  color: ${theme.colors.mainText};
 `;

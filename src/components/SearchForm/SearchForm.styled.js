@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { theme } from "globalStyles/theme";
+import { up } from 'styled-breakpoints';
 
 export const FormContainer = styled.div`
     padding: 16px 0;
@@ -9,23 +11,30 @@ export const Form = styled.form`
     width: 100%;
     max-width: 350px;
     margin: 0 auto;
-    border-radius: 4px;
+    border-radius: ${theme.radii.input};
     overflow: hidden;
 `;
 
 export const FormInput = styled.input`
     display: inline-block;
     width: 100%;
-    height: 33px;
-    font-size: 18px;
-    border: 1px solid black;
-    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: ${theme.fontSizes.m};
+    border: ${theme.borders.normal};
+    border-radius: ${theme.radii.input};
     outline: none;
-    padding: 4px;
+
+    ${up('tablet')} {
+        font-size: ${theme.fontSizes.l};
+    }
+    
 
 ::placeholder {
     font: inherit;
-    font-size: 16px;
+    font-size: ${theme.fontSizes.s};
+    ${up('tablet')} {
+        font-size: ${theme.fontSizes.m};
+    }
 }
 `;
 

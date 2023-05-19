@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { theme } from "globalStyles/theme";
+import { up } from 'styled-breakpoints';
 
 export const StyledLink = styled(Link)`
   display: inline-flex;
@@ -7,15 +9,17 @@ export const StyledLink = styled(Link)`
   gap: 4px;
   padding: 16px 0 8px 0;
 
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 16px;
+  font-weight: ${theme.fontWeights.medium};
   text-transform: uppercase;
 
-  color: black;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  color: ${theme.colors.mainText};
+  transition: ${theme.transition.main};
           
 :hover{
-  color: orangered;
+  color: ${theme.colors.accent};
 }
+
+${up('tablet')} {
+    font-size: ${theme.fontSizes.m};
+  }
 `;

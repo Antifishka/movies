@@ -1,16 +1,15 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { theme } from "globalStyles/theme";
 
 export const MoviesCard = styled.li`
-  padding: 4px;
-  border-radius: 4px;
+  padding: ${p => p.theme.space[2]}px;
+  border-radius: ${theme.radii.normal};
   overflow: hidden;
-  box-shadow: 0px 1px 1px rgb(0 0 0 / 12%), 
-  0px 4px 4px rgb(0 0 0 / 6%), 
-  1px 4px 6px rgb(0 0 0 / 16%);
+  box-shadow: ${theme.shadows.card};
 
   transform: scale(1);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${theme.transition.main};
 
   &:hover,
   &:focus{
@@ -19,13 +18,12 @@ export const MoviesCard = styled.li`
 `;
 
 export const StyledLink = styled(Link)`
-  text-decoration: none;
   color: inherit;
 `;
 
 export const MoviesImg = styled.img`
   width: 100%;
-  border-radius: 4px;
+  border-radius: ${theme.radii.normal};
   height: 300px;
   object-fit: cover;
   margin-bottom: auto;
@@ -40,14 +38,16 @@ export const MoviesCardInfo = styled.div`
 
 export const MoviesTitle = styled.h4`
   max-width: 158px; 
+
+  color: ${theme.colors.mainText};
 `;
 
 export const MoviesVote = styled.p`
   padding: 2px 4px;
-  border-radius: 4px;
-  color: white;
-  background-color: orangered;
+  border-radius: ${theme.radii.normal};
+  color: ${theme.colors.secondaryText};
+  background-color: ${theme.colors.accent};
 
-  font-size: 12px; 
-  font-weight: 600;
+  font-size: ${theme.fontSizes.xs};
+  font-weight: ${theme.fontWeights.semiBold};
 `;
