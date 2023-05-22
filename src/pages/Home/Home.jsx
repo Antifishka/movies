@@ -6,6 +6,8 @@ import { BASE_IMAGE_URL, PlACEHOLDER_IMAGE_URL } from 'constants/constants';
 import { HomeTitle, MoviesList } from "./Home.styled";
 import { MoviesItem } from "components/MoviesItem/MoviesItem";
 import { PaginationMUI } from 'components/Pagination/Pagination';
+import { ScrollUpButton } from "components/ScrollUpButton/ScrollUpButton";
+import { scrollUp } from "helpers/scrollUp";
 import { Box } from "components/Box/Box";
 
 const Home = () => {
@@ -25,6 +27,7 @@ const Home = () => {
         const {results, total_pages} = data;
         setTrendingMovies(results);
         setTotalPages(total_pages);
+        scrollUp();
 
       } catch (error) {
         console.log(error);
@@ -35,7 +38,7 @@ const Home = () => {
   }, [page, setTotalPages]);
 
   return (
-    <Box pb="52px" as="main">
+    <Box pb="60px" as="main">
       <HomeTitle>Trending today</HomeTitle>
 
       {isLoading && <Loader />} 
@@ -57,6 +60,8 @@ const Home = () => {
       </MoviesList>
 
       <PaginationMUI />
+
+      <ScrollUpButton />
     </Box>
   );
 };

@@ -8,6 +8,8 @@ import { SearchForm } from "components/SearchForm/SearchForm";
 import { Loader } from "components/Loader/Loader";
 import { MoviesItem } from "components/MoviesItem/MoviesItem";
 import { PaginationMUI } from 'components/Pagination/Pagination';
+import { ScrollUpButton } from "components/ScrollUpButton/ScrollUpButton";
+import { scrollUp } from "helpers/scrollUp";
 import { BASE_IMAGE_URL, PlACEHOLDER_IMAGE_URL } from 'constants/constants';
 import { Box } from "components/Box/Box";
 
@@ -34,6 +36,7 @@ const Movies = () => {
         const {results, total_pages} = data;
         setMovies(results);
         setTotalPages(total_pages);
+        scrollUp();
 
       } catch (error) {
         console.log(error);
@@ -57,7 +60,7 @@ const Movies = () => {
   };
   
   return (
-    <Box pb="52px" as="main">
+    <Box pb="60px" as="main">
       <SearchForm onSubmit={handleFormSubmit} onChange={updateQueryString} />
 
       {isLoading && <Loader />} 
@@ -79,6 +82,7 @@ const Movies = () => {
       </MoviesList>
 
       {movies.length > 0 && <PaginationMUI />}
+      {movies.length > 0 && <ScrollUpButton />}
     </Box>
   );
 };
