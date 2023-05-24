@@ -10,7 +10,7 @@ import { MoviesItem } from "components/MoviesItem/MoviesItem";
 import { PaginationMUI } from 'components/Pagination/Pagination';
 import { ScrollUpButton } from "components/ScrollUpButton/ScrollUpButton";
 import { scrollUp } from "helpers/scrollUp";
-import { BASE_IMAGE_URL, PlACEHOLDER_IMAGE_URL } from 'constants/constants';
+import { BASE_IMAGE_URL, PlACEHOLDER_POSTER_URL } from 'constants/constants';
 import { Box } from "components/Box/Box";
 
 const Movies = () => {
@@ -60,7 +60,7 @@ const Movies = () => {
   };
   
   return (
-    <Box pb="60px" as="main">
+    <Box pb={["46px", "52px"]} as="main">
       <SearchForm onSubmit={handleFormSubmit} onChange={updateQueryString} />
 
       {isLoading && <Loader />} 
@@ -73,7 +73,7 @@ const Movies = () => {
             title={title} 
             imagePath={poster_path
               ? BASE_IMAGE_URL + poster_path
-              : PlACEHOLDER_IMAGE_URL} 
+              : PlACEHOLDER_POSTER_URL} 
             vote={vote_average
               ? vote_average.toFixed(1)
               : `No vote`

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import API from 'services/api';
 import { usePaginationContext } from 'context/pagination';
 import { Loader } from "components/Loader/Loader";
-import { BASE_IMAGE_URL, PlACEHOLDER_IMAGE_URL } from 'constants/constants';
+import { BASE_IMAGE_URL, PlACEHOLDER_POSTER_URL } from 'constants/constants';
 import { HomeTitle, MoviesList } from "./Home.styled";
 import { MoviesItem } from "components/MoviesItem/MoviesItem";
 import { PaginationMUI } from 'components/Pagination/Pagination';
@@ -38,7 +38,7 @@ const Home = () => {
   }, [page, setTotalPages]);
 
   return (
-    <Box pb="60px" as="main">
+    <Box pb={["46px", "52px"]}  as="main">
       <HomeTitle>Trending today</HomeTitle>
 
       {isLoading && <Loader />} 
@@ -51,7 +51,7 @@ const Home = () => {
             title={title} 
             imagePath={poster_path
               ? BASE_IMAGE_URL + poster_path
-              : PlACEHOLDER_IMAGE_URL} 
+              : PlACEHOLDER_POSTER_URL} 
             vote={vote_average
               ? vote_average.toFixed(1)
               : `No vote`

@@ -23,7 +23,7 @@ export const ScrollUpButton = () => {
                 <ScrollButton
                     onClick={scrollUp}
                     aria-label="scroll-up">
-                    <IconArrowTop width={20} height={20}>
+                    <IconArrowTop width={16} height={16}>
                         <use href={`${sprite}#arrow-top`}></use>
                     </IconArrowTop>
                 </ScrollButton>}

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { theme } from 'globalStyles/theme';
 import { slideTop } from 'keyframes';
+import { up } from 'styled-breakpoints';
 
 export const ScrollButton = styled.button`
     position: fixed;
@@ -10,30 +11,39 @@ export const ScrollButton = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    border: none;
+    border: 2px solid #ff4500;
     cursor: pointer;
-    color: ${theme.colors.secondaryText};
-    background-color: ${theme.colors.accent};
+    color: ${theme.colors.accent};
+    background-color: transparent;
 
     animation: ${slideTop} 1s linear 2s infinite alternate both;
     
     transition: ${theme.transition.main};
     
     &:hover{
-        color: ${theme.colors.accent};
+        border: none;
+        color: ${theme.colors.mainText};
         background-color: ${theme.colors.secondaryText};
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         box-shadow: 0 5px 10px rgba(255, 69, 0, 0.8);
     };
     &:active {
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         box-shadow: 0 5px 10px rgba(255, 69, 0, 0.8);
+    }
+
+    ${up('tablet')} {
+        width: 50px;
+        height: 50px;
     }
 `;
 
-export const IconArrowTop  = styled.svg`
+export const IconArrowTop = styled.svg`
     fill: currentColor;
+    
+    ${up('tablet')} {
+        width: 20px;
+        height: 20px;
+    }
 `;
